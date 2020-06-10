@@ -11,18 +11,41 @@ public class UIManager : MonoBehaviour
 
     private NetworkManager m_NetworkManager;
 
+
+    public GameObject cocheAzul;
+    public GameObject cocheMorado;
+    public GameObject cocheVerde;
+    public GameObject cocheRojo;
+    public GameObject cocheNaranja;
+    public GameObject cocheNegro;
+
+
+
+
     [Header("Main Menu")] [SerializeField] private GameObject mainMenu;
     [SerializeField] private Button buttonHost;
     [SerializeField] private Button buttonClient;
     [SerializeField] private Button buttonServer;
-    [SerializeField] private InputField inputFieldIP;
 
-    [Header("In-Game HUD")] [SerializeField]
-    private GameObject inGameHUD;
+    [SerializeField] private InputField inputFieldIP;
+  
+
+    [Header("In-Game HUD")] [SerializeField] private GameObject inGameHUD;
 
     [SerializeField] private Text textSpeed;
     [SerializeField] private Text textLaps;
     [SerializeField] private Text textPosition;
+
+    [Header("Nombre Color")] [SerializeField] private GameObject nombreColor;
+
+    [SerializeField] private Button buttonAzul;
+    [SerializeField] private Button buttonMorado;
+    [SerializeField] private Button buttonVerde;
+    [SerializeField] private Button buttonRojo;
+    [SerializeField] private Button buttonNaranja;
+    [SerializeField] private Button buttonNegro;
+
+    [SerializeField] private InputField inputFieldNombre;
 
     private void Awake()
     {
@@ -31,9 +54,16 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        buttonHost.onClick.AddListener(() => StartHost());
+        buttonHost.onClick.AddListener(() => StarNombreColor());
         buttonClient.onClick.AddListener(() => StartClient());
         buttonServer.onClick.AddListener(() => StartServer());
+        buttonAzul.onClick.AddListener(() => StartAzul());
+        buttonMorado.onClick.AddListener(() => StartMorado());
+        buttonVerde.onClick.AddListener(() => StartVerde());
+        buttonRojo.onClick.AddListener(() => StartRojo());
+        buttonNaranja.onClick.AddListener(() => StartNaranja());
+        buttonNegro.onClick.AddListener(() => StartNegro());
+
         ActivateMainMenu();
     }
 
@@ -51,14 +81,55 @@ public class UIManager : MonoBehaviour
     private void ActivateInGameHUD()
     {
         mainMenu.SetActive(false);
+        nombreColor.SetActive(false);
         inGameHUD.SetActive(true);
     }
 
-    private void StartHost()
+    private void StarNombreColor() {
+        mainMenu.SetActive(false);
+        nombreColor.SetActive(true);
+    }
+    private void StartAzul()
     {
+        m_NetworkManager.playerPrefab = cocheAzul;
         m_NetworkManager.StartHost();
         ActivateInGameHUD();
     }
+    private void StartMorado()
+    {
+        m_NetworkManager.playerPrefab = cocheMorado;
+        m_NetworkManager.StartHost();
+        ActivateInGameHUD();
+    }
+    private void StartVerde()
+    {
+        m_NetworkManager.playerPrefab = cocheVerde;
+        m_NetworkManager.StartHost();
+        ActivateInGameHUD();
+    }
+    private void StartRojo()
+    {
+        m_NetworkManager.playerPrefab = cocheRojo;
+        m_NetworkManager.StartHost();
+        ActivateInGameHUD();
+    }
+    private void StartNaranja()
+    {
+        m_NetworkManager.playerPrefab = cocheNaranja;
+        m_NetworkManager.StartHost();
+        ActivateInGameHUD();
+    }
+    private void StartNegro()
+    {
+        m_NetworkManager.playerPrefab = cocheNegro;
+        m_NetworkManager.StartHost();
+        ActivateInGameHUD();
+    }
+    //private void StartHost()
+    //{
+    //   m_NetworkManager.StartHost();
+    //  ActivateInGameHUD();
+    // }
 
     private void StartClient()
     {
@@ -72,4 +143,6 @@ public class UIManager : MonoBehaviour
         m_NetworkManager.StartServer();
         ActivateInGameHUD();
     }
+
+
 }
