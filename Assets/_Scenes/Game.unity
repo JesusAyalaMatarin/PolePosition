@@ -7232,7 +7232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a2c07bf83c09332479bdce965f8f8c9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a2c07bf83c09332479bdce965f8f8c9a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7658,6 +7658,7 @@ MonoBehaviour:
     type: 3}
   cocheNegro: {fileID: 1508097745644926054, guid: bc7803af5143da44d92eb074d82daace,
     type: 3}
+  host: 0
   mainMenu: {fileID: 1196147019}
   buttonHost: {fileID: 1854017023}
   buttonClient: {fileID: 553049071}

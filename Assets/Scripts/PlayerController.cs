@@ -12,6 +12,7 @@ public class PlayerController : NetworkBehaviour
 {
     #region Variables
 
+
     [Header("Movement")] public List<AxleInfo> axleInfos;
     public float forwardMotorTorque = 100000;
     public float backwardMotorTorque = 50000;
@@ -33,7 +34,7 @@ public class PlayerController : NetworkBehaviour
     private float m_SteerHelper = 0.8f;
 
 
-    private float m_CurrentSpeed = 0;
+    public float m_CurrentSpeed = 0;
 
     private float Speed
     {
@@ -41,7 +42,7 @@ public class PlayerController : NetworkBehaviour
         set
         {
             if (Math.Abs(m_CurrentSpeed - value) < float.Epsilon) return;
-            m_CurrentSpeed = value;
+                m_CurrentSpeed = value;
             if (OnSpeedChangeEvent != null)
                 OnSpeedChangeEvent(m_CurrentSpeed);
         }
@@ -208,7 +209,7 @@ public class PlayerController : NetworkBehaviour
 // this if is needed to avoid gimbal lock problems that will make the car suddenly shift direction
         if (Mathf.Abs(CurrentRotation - transform.eulerAngles.y) < 10f)
         {
-            var turnAdjust = (transform.eulerAngles.y - CurrentRotation) * m_SteerHelper;
+            var turnAdjust = (transform.eulerAngles.y - CurrentRotation) ;
             Quaternion velRotation = Quaternion.AngleAxis(turnAdjust, Vector3.up);
             m_Rigidbody.velocity = velRotation * m_Rigidbody.velocity;
         }

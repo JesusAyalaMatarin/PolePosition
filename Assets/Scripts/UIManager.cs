@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     public GameObject cocheNaranja;
     public GameObject cocheNegro;
 
-
+    public int host;
 
 
     [Header("Main Menu")] [SerializeField] private GameObject mainMenu;
@@ -54,8 +54,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        buttonHost.onClick.AddListener(() => StartHost());
-        buttonClient.onClick.AddListener(() => StartClient());
+        buttonHost.onClick.AddListener(() => StarNombreColor());
+        buttonClient.onClick.AddListener(() => StarNombreColorCliente());
         buttonServer.onClick.AddListener(() => StartServer());
         buttonAzul.onClick.AddListener(() => StartAzul());
         buttonMorado.onClick.AddListener(() => StartMorado());
@@ -88,17 +88,39 @@ public class UIManager : MonoBehaviour
     private void StarNombreColor() {
         mainMenu.SetActive(false);
         nombreColor.SetActive(true);
+        host = 1;
+    }
+    private void StarNombreColorCliente()
+    {
+        mainMenu.SetActive(false);
+        nombreColor.SetActive(true);
+        host = 0;
     }
     private void StartAzul()
     {
         m_NetworkManager.playerPrefab = cocheAzul;
-        m_NetworkManager.StartHost();
+        if (host == 1)
+        {
+            m_NetworkManager.StartHost();
+        }
+        else {
+            
+            m_NetworkManager.StartClient();
+        }
+
         ActivateInGameHUD();
     }
     private void StartMorado()
     {
         m_NetworkManager.playerPrefab = cocheMorado;
-        m_NetworkManager.StartHost();
+        if (host == 1)
+        {
+            m_NetworkManager.StartHost();
+        }
+        else
+        {
+            m_NetworkManager.StartClient();
+        }
         ActivateInGameHUD();
     }
     private void StartVerde()
@@ -133,6 +155,7 @@ public class UIManager : MonoBehaviour
 
     private void StartClient()
     {
+
         m_NetworkManager.StartClient();
         m_NetworkManager.networkAddress = inputFieldIP.text;
         ActivateInGameHUD();

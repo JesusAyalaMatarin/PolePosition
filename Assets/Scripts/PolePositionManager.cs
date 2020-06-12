@@ -20,7 +20,7 @@ public class PolePositionManager : NetworkBehaviour
         if (m_CircuitController == null) m_CircuitController = FindObjectOfType<CircuitController>();
 
         m_DebuggingSpheres = new GameObject[networkManager.maxConnections];
-        for (int i = 0; i < networkManager.maxConnections; ++i)
+        for (int i = 0; i < networkManager.maxConnections; i++)
         {
             m_DebuggingSpheres[i] = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             m_DebuggingSpheres[i].GetComponent<SphereCollider>().enabled = false;

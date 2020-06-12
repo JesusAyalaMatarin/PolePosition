@@ -94,6 +94,7 @@ namespace Mirror
         public string networkAddress = "localhost";
 
         /// <summary>
+        /// 
         /// The maximum number of concurrent network connections to support.
         /// <para>This effects the memory usage of the network layer.</para>
         /// </summary>
