@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        buttonHost.onClick.AddListener(() => StarNombreColor());
+        buttonHost.onClick.AddListener(() => StartHost());
         buttonClient.onClick.AddListener(() => StartClient());
         buttonServer.onClick.AddListener(() => StartServer());
         buttonAzul.onClick.AddListener(() => StartAzul());
@@ -125,11 +125,11 @@ public class UIManager : MonoBehaviour
         m_NetworkManager.StartHost();
         ActivateInGameHUD();
     }
-    //private void StartHost()
-    //{
-    //   m_NetworkManager.StartHost();
-    //  ActivateInGameHUD();
-    // }
+    private void StartHost()
+    {
+       m_NetworkManager.StartHost();
+      ActivateInGameHUD();
+     }
 
     private void StartClient()
     {
