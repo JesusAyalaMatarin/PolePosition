@@ -47,12 +47,12 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private InputField inputFieldNombre;
 
-    [Header("Sala Espera")] [SerializeField] private GameObject SalaEspera;
+    [Header("Sala Espera")] [SerializeField] private GameObject salaEspera;
 
-    [SerializeField] private Text JugadoresConectados;
-    [SerializeField] private Text JugadoresConectadosButton;
+    [SerializeField] private Text jugadoresConectados;
+    [SerializeField] private Text jugadoresConectadosButton;
 
-    [SerializeField] private Button ButtonPreparado;
+    [SerializeField] private Button buttonPreparado;
 
     private void Awake()
     {
@@ -70,10 +70,30 @@ public class UIManager : MonoBehaviour
         buttonRojo.onClick.AddListener(() => StartRojo());
         buttonNaranja.onClick.AddListener(() => StartNaranja());
         buttonNegro.onClick.AddListener(() => StartNegro());
+        buttonPreparado.onClick.AddListener(() => Metododebarrera());
 
         ActivateMainMenu();
     }
 
+    private void Metododebarrera()
+    {
+        if (host == 1)
+        {
+            m_NetworkManager.StartHost();
+            ActivateInGameHUD();
+        }
+        else
+        {
+
+            m_NetworkManager.StartClient();
+            ActivateInGameHUD();
+        }
+        throw new NotImplementedException();
+    }
+
+    public void ActivaSalaEspera() {
+
+    }
     public void UpdateSpeed(int speed)
     {
         textSpeed.text = "Speed " + speed + " Km/h";
@@ -89,6 +109,7 @@ public class UIManager : MonoBehaviour
     {
         mainMenu.SetActive(false);
         nombreColor.SetActive(false);
+        salaEspera.SetActive(false);
         inGameHUD.SetActive(true);
     }
 
@@ -106,53 +127,38 @@ public class UIManager : MonoBehaviour
     private void StartAzul()
     {
         m_NetworkManager.playerPrefab = cocheAzul;
-        if (host == 1)
-        {
-            m_NetworkManager.StartHost();
-        }
-        else {
-            
-            m_NetworkManager.StartClient();
-        }
-
-        ActivateInGameHUD();
+        nombreColor.SetActive(false);
+        salaEspera.SetActive(true);
     }
     private void StartMorado()
     {
         m_NetworkManager.playerPrefab = cocheMorado;
-        if (host == 1)
-        {
-            m_NetworkManager.StartHost();
-        }
-        else
-        {
-            m_NetworkManager.StartClient();
-        }
-        ActivateInGameHUD();
+        nombreColor.SetActive(false);
+        salaEspera.SetActive(true);
     }
     private void StartVerde()
     {
         m_NetworkManager.playerPrefab = cocheVerde;
-        m_NetworkManager.StartHost();
-        ActivateInGameHUD();
+        nombreColor.SetActive(false);
+        salaEspera.SetActive(true);
     }
     private void StartRojo()
     {
         m_NetworkManager.playerPrefab = cocheRojo;
-        m_NetworkManager.StartHost();
-        ActivateInGameHUD();
+        nombreColor.SetActive(false);
+        salaEspera.SetActive(true);
     }
     private void StartNaranja()
     {
         m_NetworkManager.playerPrefab = cocheNaranja;
-        m_NetworkManager.StartHost();
-        ActivateInGameHUD();
+        nombreColor.SetActive(false);
+        salaEspera.SetActive(true);
     }
     private void StartNegro()
     {
         m_NetworkManager.playerPrefab = cocheNegro;
-        m_NetworkManager.StartHost();
-        ActivateInGameHUD();
+        nombreColor.SetActive(false);
+        salaEspera.SetActive(true);
     }
     private void StartHost()
     {
