@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,6 +40,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Nombre Color")] [SerializeField] private GameObject nombreColor;
 
+    CountdownEvent c = new CountdownEvent(2);
+
     [SerializeField] private Button buttonAzul;
     [SerializeField] private Button buttonMorado;
     [SerializeField] private Button buttonVerde;
@@ -70,6 +74,7 @@ public class UIManager : MonoBehaviour
         buttonRojo.onClick.AddListener(() => StartRojo());
         buttonNaranja.onClick.AddListener(() => StartNaranja());
         buttonNegro.onClick.AddListener(() => StartNegro());
+
         buttonPreparado.onClick.AddListener(() => Metododebarrera());
 
         ActivateMainMenu();
@@ -77,6 +82,9 @@ public class UIManager : MonoBehaviour
 
     private void Metododebarrera()
     {
+        c.Signal();
+        c.Wait();
+
         if (host == 1)
         {
             m_NetworkManager.StartHost();
@@ -91,9 +99,11 @@ public class UIManager : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    public void ActivaSalaEspera() {
+    public void ActivaSalaEspera()
+    {
 
     }
+
     public void UpdateSpeed(int speed)
     {
         textSpeed.text = "Speed " + speed + " Km/h";
