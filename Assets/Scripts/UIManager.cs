@@ -47,6 +47,13 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private InputField inputFieldNombre;
 
+    [Header("Sala Espera")] [SerializeField] private GameObject SalaEspera;
+
+    [SerializeField] private Text JugadoresConectados;
+    [SerializeField] private Text JugadoresConectadosButton;
+
+    [SerializeField] private Button ButtonPreparado;
+
     private void Awake()
     {
         m_NetworkManager = FindObjectOfType<NetworkManager>();
