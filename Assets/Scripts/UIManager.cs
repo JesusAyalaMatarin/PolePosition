@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Nombre Color")] [SerializeField] private GameObject nombreColor;
 
-    CountdownEvent c = new CountdownEvent(2);
+    
 
     [SerializeField] private Button buttonAzul;
     [SerializeField] private Button buttonMorado;
@@ -82,8 +82,7 @@ public class UIManager : MonoBehaviour
 
     private void Metododebarrera()
     {
-        c.Signal();
-        c.Wait();
+        metodoBarrera(); //Este es el metodo barrera que quiero llamar del poleposition
 
         if (host == 1)
         {

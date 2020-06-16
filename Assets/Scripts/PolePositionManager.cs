@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Text;
 using Mirror;
 using UnityEngine;
@@ -9,10 +12,17 @@ public class PolePositionManager : NetworkBehaviour
 {
     public int numPlayers;
     public NetworkManager networkManager;
+    CountdownEvent c = new CountdownEvent(2);
 
     private readonly List<PlayerInfo> m_Players = new List<PlayerInfo>(4);
     private CircuitController m_CircuitController;
     private GameObject[] m_DebuggingSpheres;
+
+    public void metodoBarrera()
+    {
+        c.Signal();
+        c.Wait();
+    }
 
     private void Awake()
     {
