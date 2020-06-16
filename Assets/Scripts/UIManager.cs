@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Nombre Color")] [SerializeField] private GameObject nombreColor;
 
-    
+    public PolePositionManager m_polePositionManager = FindObjectOfType<PolePositionManager>();
 
     [SerializeField] private Button buttonAzul;
     [SerializeField] private Button buttonMorado;
@@ -82,7 +82,7 @@ public class UIManager : MonoBehaviour
 
     private void Metododebarrera()
     {
-        metodoBarrera(); //Este es el metodo barrera que quiero llamar del poleposition
+        m_polePositionManager.metodoBarrera(); 
 
         if (host == 1)
         {

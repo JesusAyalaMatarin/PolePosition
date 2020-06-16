@@ -12,17 +12,12 @@ public class PolePositionManager : NetworkBehaviour
 {
     public int numPlayers;
     public NetworkManager networkManager;
-    CountdownEvent c = new CountdownEvent(2);
+    public CountdownEvent c = new CountdownEvent(2);
 
     private readonly List<PlayerInfo> m_Players = new List<PlayerInfo>(4);
     private CircuitController m_CircuitController;
     private GameObject[] m_DebuggingSpheres;
-
-    public void metodoBarrera()
-    {
-        c.Signal();
-        c.Wait();
-    }
+    
 
     private void Awake()
     {
@@ -35,6 +30,12 @@ public class PolePositionManager : NetworkBehaviour
             m_DebuggingSpheres[i] = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             m_DebuggingSpheres[i].GetComponent<SphereCollider>().enabled = false;
         }
+    }
+
+    public void metodoBarrera()
+    {
+        c.Signal();
+        c.Wait();
     }
 
     private void Update()
