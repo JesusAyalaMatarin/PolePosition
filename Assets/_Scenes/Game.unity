@@ -204,7 +204,18 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2140735090}
+        m_MethodName: set_Name
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
@@ -5485,7 +5496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1196147020
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5852,7 +5863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1212027516
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7972,6 +7983,7 @@ MonoBehaviour:
   textLaps: {fileID: 155323079}
   textPosition: {fileID: 864211679}
   nombreColor: {fileID: 1944860499}
+  m_polePositionManager: {fileID: 0}
   buttonAzul: {fileID: 876901709}
   buttonMorado: {fileID: 217052498}
   buttonVerde: {fileID: 83055720}
@@ -9477,8 +9489,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2140735093}
-  - component: {fileID: 2140735090}
   - component: {fileID: 2140735091}
+  - component: {fileID: 2140735090}
   m_Layer: 0
   m_Name: '@NetworkManager'
   m_TagString: Untagged
@@ -9495,7 +9507,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2140735089}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
+  m_Script: {fileID: 11500000, guid: c3105d43abe45434788b0370e45adc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
@@ -9509,17 +9521,11 @@ MonoBehaviour:
   networkAddress: localhost
   maxConnections: 4
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 1508097745644926054, guid: 8cb0f194315f5874797b12dac7f6cdfb,
-    type: 3}
+  playerPrefab: {fileID: 0}
   autoCreatePlayer: 1
-  playerSpawnMethod: 1
-  spawnPrefabs:
-  - {fileID: 1508097745644926054, guid: 8cb0f194315f5874797b12dac7f6cdfb, type: 3}
-  - {fileID: 1508097745644926054, guid: 512a356fb9662834d96d7ad749bb8e9f, type: 3}
-  - {fileID: 1508097745644926054, guid: 3808036c63f96af45abb49da989e05fb, type: 3}
-  - {fileID: 1508097745644926054, guid: a45a6444c5e327f40bd9f25877eef1d0, type: 3}
-  - {fileID: 1508097745644926054, guid: 814d5b966eaa7d249bcf70cf6f41b056, type: 3}
-  - {fileID: 1508097745644926054, guid: bc7803af5143da44d92eb074d82daace, type: 3}
+  playerSpawnMethod: 0
+  spawnPrefabs: []
+  chatWindow: {fileID: 0}
 --- !u!114 &2140735091
 MonoBehaviour:
   m_ObjectHideFlags: 0

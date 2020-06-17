@@ -171,7 +171,7 @@ public class UIManager : MonoBehaviour
     }
     private void StartHost()
     {
-       m_NetworkManager.StartHost();
+      m_NetworkManager.StartHost();
       ActivateInGameHUD();
      }
 
