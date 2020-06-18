@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     public GameObject cocheNegro;
 
     public int host;
+    public string color;
 
 
     [Header("Main Menu")] [SerializeField] private GameObject mainMenu;
@@ -55,6 +56,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text jugadoresConectadosButton;
 
     [SerializeField] private Button buttonPreparado;
+
 
     private void Awake()
     {
@@ -118,6 +120,7 @@ public class UIManager : MonoBehaviour
     }
 
     private void StarNombreColor() {
+
         mainMenu.SetActive(false);
         nombreColor.SetActive(true);
         host = 1;
@@ -130,39 +133,85 @@ public class UIManager : MonoBehaviour
     }
     private void StartAzul()
     {
-        m_NetworkManager.playerPrefab = cocheAzul;
+        color = "azul";
         nombreColor.SetActive(false);
         salaEspera.SetActive(true);
+        if (host == 1) {
+            m_NetworkManager.StartHost();
+        }
+        else {
+            m_NetworkManager.StartClient();
+        } 
     }
     private void StartMorado()
     {
-        m_NetworkManager.playerPrefab = cocheMorado;
+        color = "morado";
         nombreColor.SetActive(false);
         salaEspera.SetActive(true);
+        if (host == 1)
+        {
+            m_NetworkManager.StartHost();
+        }
+        else
+        {
+            m_NetworkManager.StartClient();
+        }
     }
     private void StartVerde()
     {
-        m_NetworkManager.playerPrefab = cocheVerde;
+        color = "verde";
         nombreColor.SetActive(false);
         salaEspera.SetActive(true);
+        if (host == 1)
+        {
+            m_NetworkManager.StartHost();
+        }
+        else
+        {
+            m_NetworkManager.StartClient();
+        }
     }
     private void StartRojo()
     {
-        m_NetworkManager.playerPrefab = cocheRojo;
+        color = "rojo";
         nombreColor.SetActive(false);
         salaEspera.SetActive(true);
+        if (host == 1)
+        {
+            m_NetworkManager.StartHost();
+        }
+        else
+        {
+            m_NetworkManager.StartClient();
+        }
     }
     private void StartNaranja()
     {
-        m_NetworkManager.playerPrefab = cocheNaranja;
+        color = "naranja";
         nombreColor.SetActive(false);
         salaEspera.SetActive(true);
+        if (host == 1)
+        {
+            m_NetworkManager.StartHost();
+        }
+        else
+        {
+            m_NetworkManager.StartClient();
+        }
     }
     private void StartNegro()
     {
-        m_NetworkManager.playerPrefab = cocheNegro;
+        color = "negro";
         nombreColor.SetActive(false);
         salaEspera.SetActive(true);
+        if (host == 1)
+        {
+            m_NetworkManager.StartHost();
+        }
+        else
+        {
+            m_NetworkManager.StartClient();
+        }
     }
     private void StartHost()
     {

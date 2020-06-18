@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
+
     public string Name { get; set; }
 
     public int ID { get; set; }
@@ -17,4 +18,5 @@ public class PlayerInfo : MonoBehaviour
     {
         return Name;
     }
+
 }

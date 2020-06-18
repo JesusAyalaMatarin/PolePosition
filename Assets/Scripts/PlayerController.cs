@@ -126,36 +126,11 @@ public class PlayerController : NetworkBehaviour
         SteerHelper();
         SpeedLimiter();
         AddDownForce();
-        TractionControl();
     }
 
     #endregion
 
     #region Methods
-
-    // crude traction control that reduces the power to wheel if the car is wheel spinning too much
-    private void TractionControl()
-    {
-        foreach (var axleInfo in axleInfos)
-        {
-            WheelHit wheelHitLeft;
-            WheelHit wheelHitRight;
-            axleInfo.leftWheel.GetGroundHit(out wheelHitLeft);
-            axleInfo.rightWheel.GetGroundHit(out wheelHitRight);
-
-            if (wheelHitLeft.forwardSlip >= slipLimit)
-            {
-                var howMuchSlip = (wheelHitLeft.forwardSlip - slipLimit) / (1 - slipLimit);
-                axleInfo.leftWheel.motorTorque -= axleInfo.leftWheel.motorTorque * howMuchSlip * slipLimit;
-            }
-
-            if (wheelHitRight.forwardSlip >= slipLimit)
-            {
-                var howMuchSlip = (wheelHitRight.forwardSlip - slipLimit) / (1 - slipLimit);
-                axleInfo.rightWheel.motorTorque -= axleInfo.rightWheel.motorTorque * howMuchSlip * slipLimit;
-            }
-        }
-    }
 
 // this is used to add more grip in relation to speed
     private void AddDownForce()

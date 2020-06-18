@@ -11,7 +11,9 @@ using Random = System.Random;
 public class SetupPlayer : NetworkBehaviour
 {
     [SyncVar] private int m_ID;
-    [SyncVar] private string m_Name;
+    [SyncVar] public string m_Name;
+
+    public static event Action<SetupPlayer, string> OnMessage;
 
     private UIManager m_UIManager;
     private NetworkManager m_NetworkManager;
@@ -40,7 +42,7 @@ public class SetupPlayer : NetworkBehaviour
     {
         base.OnStartClient();
         m_PlayerInfo.ID = m_ID;
-        m_PlayerInfo.Name = "Player" + m_ID;
+        m_PlayerInfo.Name = m_Name;
         m_PlayerInfo.CurrentLap = 0;
         m_PolePositionManager.AddPlayer(m_PlayerInfo);
     }
@@ -83,5 +85,18 @@ public class SetupPlayer : NetworkBehaviour
     void ConfigureCamera()
     {
         if (Camera.main != null) Camera.main.gameObject.GetComponent<CameraController>().m_Focus = this.gameObject;
+    }
+
+    [Command]
+    public void CmdSend(string message)
+    {
+        if (message.Trim() != "")
+            RpcReceive(message.Trim());
+    }
+
+    [ClientRpc]
+    public void RpcReceive(string message)
+    {
+        OnMessage?.Invoke(this, message);
     }
 }
