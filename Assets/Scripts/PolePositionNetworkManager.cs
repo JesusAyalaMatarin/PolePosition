@@ -8,7 +8,7 @@ namespace Mirror.Examples.Chat
     [AddComponentMenu("")]
     public class PolePositionNetworkManager : NetworkManager
     {
-        public string m_Name { get; set; }
+        public string Name { get; set; }
 
         public void SetHostname(string hostname)
         {
@@ -31,7 +31,7 @@ namespace Mirror.Examples.Chat
             base.OnClientConnect(conn);
 
             // tell the server to create a player with this name
-            conn.Send(new CreatePlayerMessage { name = m_Name });
+            conn.Send(new CreatePlayerMessage { name = Name });
         }
 
         private void OnCreatePlayer(NetworkConnection connection, CreatePlayerMessage createPlayerMessage)
