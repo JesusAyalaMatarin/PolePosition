@@ -8,14 +8,12 @@ namespace Mirror.Examples.Chat
     [AddComponentMenu("")]
     public class PolePositionNetworkManager : NetworkManager
     {
-        public string Name { get; set; }
+        public string m_Name { get; set; }
 
         public void SetHostname(string hostname)
         {
             networkAddress = hostname;
         }
-
-        public ChatWindow chatWindow;
 
         public class CreatePlayerMessage : MessageBase
         {
@@ -33,19 +31,17 @@ namespace Mirror.Examples.Chat
             base.OnClientConnect(conn);
 
             // tell the server to create a player with this name
-            conn.Send(new CreatePlayerMessage { name = Name });
+            conn.Send(new CreatePlayerMessage { name = m_Name });
         }
 
         private void OnCreatePlayer(NetworkConnection connection, CreatePlayerMessage createPlayerMessage)
         {
             // create a gameobject using the name supplied by client
             GameObject playergo = Instantiate(playerPrefab);
-            playergo.GetComponent<PlayerInfo>().Name = createPlayerMessage.name;
+            playergo.GetComponent<SetupPlayer>().m_Name = createPlayerMessage.name;
 
             // set it as the player
             NetworkServer.AddPlayerForConnection(connection, playergo);
-
-            chatWindow.gameObject.SetActive(true);
         }
     }
 }
