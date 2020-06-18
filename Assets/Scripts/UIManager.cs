@@ -41,6 +41,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Nombre Color")] [SerializeField] private GameObject nombreColor;
 
+    public PolePositionManager m_polePositionManager = FindObjectOfType<PolePositionManager>();
+
     [SerializeField] private Button buttonAzul;
     [SerializeField] private Button buttonMorado;
     [SerializeField] private Button buttonVerde;
@@ -82,6 +84,8 @@ public class UIManager : MonoBehaviour
 
     private void Metododebarrera()
     {
+        m_polePositionManager.metodoBarrera(); 
+
         if (host == 1)
         {
             m_NetworkManager.StartHost();
@@ -89,6 +93,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+
             m_NetworkManager.StartClient();
             ActivateInGameHUD();
         }

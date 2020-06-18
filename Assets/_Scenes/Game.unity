@@ -6657,7 +6657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1212027516
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8970,6 +8970,7 @@ MonoBehaviour:
   textLaps: {fileID: 155323079}
   textPosition: {fileID: 864211679}
   nombreColor: {fileID: 1944860499}
+  m_polePositionManager: {fileID: 0}
   buttonAzul: {fileID: 876901709}
   buttonMorado: {fileID: 217052498}
   buttonVerde: {fileID: 83055720}
