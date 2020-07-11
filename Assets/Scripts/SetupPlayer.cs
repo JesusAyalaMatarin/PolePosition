@@ -11,7 +11,7 @@ using Random = System.Random;
 public class SetupPlayer : NetworkBehaviour
 {
     [SyncVar] private int m_ID;
-    [SyncVar] public string m_Name;
+    [SyncVar] public string playerName;
 
 
 
@@ -44,6 +44,7 @@ public class SetupPlayer : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
+
         m_ID = connectionToClient.connectionId;
     }
 
@@ -53,7 +54,7 @@ public class SetupPlayer : NetworkBehaviour
     /// </summary>
     public override void OnStartLocalPlayer()
     {
-        m_PlayerInfo.name = m_Name;
+        playerName = m_NetworkManager.name;
         m_PlayerInfo.ID = m_ID;
         m_PlayerInfo.CurrentLap = 0;
         m_PlayerInfo.Color = m_UIManager.color;

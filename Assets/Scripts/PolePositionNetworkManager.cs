@@ -37,8 +37,8 @@ namespace Mirror.Examples.Chat
         private void OnCreatePlayer(NetworkConnection connection, CreatePlayerMessage createPlayerMessage)
         {
             // create a gameobject using the name supplied by client
-            GameObject playergo = Instantiate(playerPrefab, this.transform);
-            playergo.GetComponent<SetupPlayer>().m_Name = createPlayerMessage.name;
+            GameObject playergo = Instantiate(playerPrefab);
+            playergo.GetComponent<SetupPlayer>().playerName = createPlayerMessage.name;
 
             // set it as the player
             NetworkServer.AddPlayerForConnection(connection, playergo);

@@ -18,8 +18,8 @@ namespace Mirror.Examples.Chat
         private void OnPlayerMessage(SetupPlayer player, string message)
         {
             string prettyMessage = player.isLocalPlayer ?
-                $"<color=red>{player.m_Name}: </color> {message}" :
-                $"<color=blue>{player.m_Name}: </color> {message}";
+                $"<color=red>{player.playerName}: </color> {message}" :
+                $"<color=blue>{player.playerName}: </color> {message}";
             AppendMessage(prettyMessage);
 
             Debug.Log(message);

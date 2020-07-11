@@ -6,7 +6,7 @@ Assets/_Scenes/Game.unity
 SceneListEnd?
 93f098e80aa5266dce8b55ec7e58543d Mirror.dll:Mirror.TelepathyTransport
 3c08375166df118bd1801438fc36b92f Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
-a6fc4ad6c45052bcada2ceac4f3027d9 Assembly-CSharp.dll:.SetupPlayer
+9b5a106d716e10dbf0635b1180cc5e67 Assembly-CSharp.dll:.SetupPlayer
 77c21079ace8d76ce6e941d3dabbfe6e Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.scrip
 4e55399bb1b81f08ab790913f62fbbac Mirror.dll:Mirror.NetworkManagerHUD
