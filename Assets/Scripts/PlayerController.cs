@@ -60,6 +60,7 @@ public class PlayerController : NetworkBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_PlayerInfo = GetComponent<PlayerInfo>();
+        m_Rigidbody.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     public void Update()

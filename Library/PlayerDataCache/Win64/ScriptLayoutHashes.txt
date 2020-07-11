@@ -8,6 +8,7 @@ SceneListEnd?
 3c08375166df118bd1801438fc36b92f Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 a6fc4ad6c45052bcada2ceac4f3027d9 Assembly-CSharp.dll:.SetupPlayer
 77c21079ace8d76ce6e941d3dabbfe6e Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.scrip
 4e55399bb1b81f08ab790913f62fbbac Mirror.dll:Mirror.NetworkManagerHUD
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -94,7 +95,6 @@ abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.Tou
 5da7b9e4b43d0ba75d617a81259ec141 Mirror.Examples.dll:Mirror.Examples.Chat.ChatWindow
 f3a8ccc18ad656ac8993b34a1b30984f Mirror.Examples.dll:Mirror.Examples.NetworkRoom.NetworkRoomPlayerExt
 d5b39c54cd3b8db955940e7482d69ad7 Mirror.Examples.dll:Mirror.Examples.NetworkRoom.Spawner
-1c64d72d977bc6cbd880528ac9337a8b Assembly-CSharp.dll:Mirror.Examples.Chat.PolePositionNetworkManager
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 780e8f682b3221346c034a6712a0fd25 UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -107,9 +107,10 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-26171cc6936ca23693d6ba6f50357c20 Assembly-CSharp.dll:.UIManager
+9c081d7818648ab0d93b335947da7d3d Assembly-CSharp.dll:.UIManager
 0ff99d510934a09ffb11115e10289020 Mirror.dll:Mirror.Websocket.WebsocketTransport
 4e9333594897a1fb8b136ad2eae996c7 Unity.TextMeshPro.dll:TMPro.TMP_SubMeshUI
+1c64d72d977bc6cbd880528ac9337a8b Assembly-CSharp.dll:Mirror.Examples.Chat.PolePositionNetworkManager
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 1dcb82730d983b77cec736c6ef19f814 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery

@@ -12,18 +12,17 @@ public class UIManager : MonoBehaviour
     public bool showGUI = true;
 
     private NetworkManager m_NetworkManager;
-
-
-    public GameObject cocheAzul;
-    public GameObject cocheMorado;
-    public GameObject cocheVerde;
-    public GameObject cocheRojo;
-    public GameObject cocheNaranja;
-    public GameObject cocheNegro;
+    private CircuitController m_CircuitController;
+    private PolePositionManager m_polePositionManager;
 
     public int host;
     public string color;
-
+    public float tiempo = 0;
+    public float tiempoGlobal = 0;
+    public int numPlayers;
+    public int numLaps;
+    public bool empezardoTiempo;
+    public bool empezadoTiempoGlobal;
 
     [Header("Main Menu")] [SerializeField] private GameObject mainMenu;
     [SerializeField] private Button buttonHost;
@@ -41,16 +40,28 @@ public class UIManager : MonoBehaviour
 
     [Header("Nombre Color")] [SerializeField] private GameObject nombreColor;
 
-    public PolePositionManager m_polePositionManager = FindObjectOfType<PolePositionManager>();
-
     [SerializeField] private Button buttonAzul;
     [SerializeField] private Button buttonMorado;
     [SerializeField] private Button buttonVerde;
     [SerializeField] private Button buttonRojo;
     [SerializeField] private Button buttonNaranja;
     [SerializeField] private Button buttonNegro;
+    [SerializeField] private Button buttonSiguiente;
 
-    [SerializeField] private InputField inputFieldNombre;
+    [SerializeField] public InputField inputFieldNombre;
+
+    [Header("Nombre Color Host")] [SerializeField] private GameObject nombreColorHost;
+
+    [SerializeField] private Button buttonAzulH;
+    [SerializeField] private Button buttonMoradoH;
+    [SerializeField] private Button buttonVerdeH;
+    [SerializeField] private Button buttonRojoH;
+    [SerializeField] private Button buttonNaranjaH;
+    [SerializeField] private Button buttonNegroH;
+    [SerializeField] private Button buttonSiguienteH;
+
+    [SerializeField] public InputField inputFieldNombreH;
+    [SerializeField] private InputField inputFieldVueltas;
 
     [Header("Sala Espera")] [SerializeField] private GameObject salaEspera;
 
@@ -63,19 +74,29 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         m_NetworkManager = FindObjectOfType<NetworkManager>();
+        m_CircuitController = FindObjectOfType<CircuitController>();
+        m_polePositionManager = FindObjectOfType<PolePositionManager>();
     }
 
     private void Start()
     {
-        buttonHost.onClick.AddListener(() => StarNombreColor());
-        buttonClient.onClick.AddListener(() => StarNombreColorCliente());
+        buttonHost.onClick.AddListener(() => StartOpcionesH());
+        buttonClient.onClick.AddListener(() => StartOpcionesC());
         buttonServer.onClick.AddListener(() => StartServer());
-        buttonAzul.onClick.AddListener(() => StartAzul());
-        buttonMorado.onClick.AddListener(() => StartMorado());
-        buttonVerde.onClick.AddListener(() => StartVerde());
-        buttonRojo.onClick.AddListener(() => StartRojo());
-        buttonNaranja.onClick.AddListener(() => StartNaranja());
-        buttonNegro.onClick.AddListener(() => StartNegro());
+        buttonAzul.onClick.AddListener(() => color = "azul");
+        buttonMorado.onClick.AddListener(() => color = "morado");
+        buttonVerde.onClick.AddListener(() => color = "verde");
+        buttonRojo.onClick.AddListener(() => color = "rojo");
+        buttonNaranja.onClick.AddListener(() => color = "naranja");
+        buttonNegro.onClick.AddListener(() => color = "negro");
+        buttonAzulH.onClick.AddListener(() => color = "azul");
+        buttonMoradoH.onClick.AddListener(() => color = "morado");
+        buttonVerdeH.onClick.AddListener(() => color = "verde");
+        buttonRojoH.onClick.AddListener(() => color = "rojo");
+        buttonNaranjaH.onClick.AddListener(() => color = "naranja");
+        buttonNegroH.onClick.AddListener(() => color = "negro");
+        buttonSiguiente.onClick.AddListener(() => StartLobby());
+        buttonSiguienteH.onClick.AddListener(() => StartLobby());
 
         buttonPreparado.onClick.AddListener(() => Metododebarrera());
 
@@ -123,36 +144,21 @@ public class UIManager : MonoBehaviour
         salaEspera.SetActive(false);
         inGameHUD.SetActive(true);
     }
-
-    private void StarNombreColor() {
-
-        mainMenu.SetActive(false);
-        nombreColor.SetActive(true);
+    private void StartOpcionesH()
+    {
         host = 1;
+        mainMenu.SetActive(false);
+        nombreColorHost.SetActive(true);
     }
-    private void StarNombreColorCliente()
+    
+    private void StartOpcionesC()
     {
+        host = 0;
         mainMenu.SetActive(false);
         nombreColor.SetActive(true);
-        host = 0;
     }
-    private void StartAzul()
+    private void StartLobby()
     {
-        color = "azul";
-        nombreColor.SetActive(false);
-        salaEspera.SetActive(true);
-        if (host == 1) {
-            m_NetworkManager.StartHost();
-        }
-        else {
-            m_NetworkManager.StartClient();
-        } 
-    }
-    private void StartMorado()
-    {
-        color = "morado";
-        nombreColor.SetActive(false);
-        salaEspera.SetActive(true);
         if (host == 1)
         {
             m_NetworkManager.StartHost();
@@ -161,63 +167,12 @@ public class UIManager : MonoBehaviour
         {
             m_NetworkManager.StartClient();
         }
-    }
-    private void StartVerde()
-    {
-        color = "verde";
         nombreColor.SetActive(false);
+        nombreColorHost.SetActive(false);
         salaEspera.SetActive(true);
-        if (host == 1)
-        {
-            m_NetworkManager.StartHost();
-        }
-        else
-        {
-            m_NetworkManager.StartClient();
-        }
+
     }
-    private void StartRojo()
-    {
-        color = "rojo";
-        nombreColor.SetActive(false);
-        salaEspera.SetActive(true);
-        if (host == 1)
-        {
-            m_NetworkManager.StartHost();
-        }
-        else
-        {
-            m_NetworkManager.StartClient();
-        }
-    }
-    private void StartNaranja()
-    {
-        color = "naranja";
-        nombreColor.SetActive(false);
-        salaEspera.SetActive(true);
-        if (host == 1)
-        {
-            m_NetworkManager.StartHost();
-        }
-        else
-        {
-            m_NetworkManager.StartClient();
-        }
-    }
-    private void StartNegro()
-    {
-        color = "negro";
-        nombreColor.SetActive(false);
-        salaEspera.SetActive(true);
-        if (host == 1)
-        {
-            m_NetworkManager.StartHost();
-        }
-        else
-        {
-            m_NetworkManager.StartClient();
-        }
-    }
+
     private void StartHost()
     {
       m_NetworkManager.StartHost();
@@ -226,7 +181,6 @@ public class UIManager : MonoBehaviour
 
     private void StartClient()
     {
-
         m_NetworkManager.StartClient();
         m_NetworkManager.networkAddress = inputFieldIP.text;
         ActivateInGameHUD();
@@ -237,6 +191,4 @@ public class UIManager : MonoBehaviour
         m_NetworkManager.StartServer();
         ActivateInGameHUD();
     }
-
-
 }

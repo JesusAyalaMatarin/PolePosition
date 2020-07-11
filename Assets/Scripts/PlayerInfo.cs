@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-
     public string Name { get; set; }
 
     public int ID { get; set; }
@@ -13,6 +13,8 @@ public class PlayerInfo : MonoBehaviour
     public int CurrentPosition { get; set; }
 
     public int CurrentLap { get; set; }
+
+    public string Color { get; set; }
 
     public override string ToString()
     {

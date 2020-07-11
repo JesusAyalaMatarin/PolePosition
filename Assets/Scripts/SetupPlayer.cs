@@ -13,6 +13,8 @@ public class SetupPlayer : NetworkBehaviour
     [SyncVar] private int m_ID;
     [SyncVar] public string m_Name;
 
+
+
     public static event Action<SetupPlayer, string> OnMessage;
 
     private UIManager m_UIManager;
@@ -31,7 +33,8 @@ public class SetupPlayer : NetworkBehaviour
     public override void OnStartServer()
     {
         base.OnStartServer();
-        m_ID = connectionToClient.connectionId;
+        
+
     }
 
     /// <summary>
@@ -41,9 +44,7 @@ public class SetupPlayer : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-        m_PlayerInfo.ID = m_ID;
-        m_PlayerInfo.CurrentLap = 0;
-        m_PolePositionManager.AddPlayer(m_PlayerInfo);
+        m_ID = connectionToClient.connectionId;
     }
 
     /// <summary>
@@ -52,6 +53,11 @@ public class SetupPlayer : NetworkBehaviour
     /// </summary>
     public override void OnStartLocalPlayer()
     {
+        m_PlayerInfo.name = m_Name;
+        m_PlayerInfo.ID = m_ID;
+        m_PlayerInfo.CurrentLap = 0;
+        m_PlayerInfo.Color = m_UIManager.color;
+        m_PolePositionManager.AddPlayer(m_PlayerInfo);
     }
 
     #endregion
